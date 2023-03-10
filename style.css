@@ -1,0 +1,319 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&display=swap");
+
+/* https://andy-bell.co.uk/a-modern-css-reset/ */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-top: 0;
+  line-height: 1.1;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:root {
+  --Primary-100: 180 29% 50%;
+
+  --Neutral-100-BG: 180 52% 96%;
+  --Neutral-200-Filter-Tablets: 180 31% 95%;
+  --Neutral-300: 180 8% 52%;
+  --Neutral-400: 180 14% 20%;
+}
+
+body {
+  font-size: 0.9375rem;
+  font-family: "League Spartan", sans-serif;
+}
+
+.header {
+  height: 25vh;
+  background-color: hsl(var(--Primary-100));
+  background-image: url(./images/bg-header-mobile.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.job__lists {
+  width: min(90%, 800px);
+  /* outline: 1px solid red; */
+  margin-inline: auto;
+  position: relative;
+  top: -3rem;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em 1em;
+
+  background-color: white;
+  box-shadow: 3px 6px 33px 0px rgba(0, 0, 0, 0.6);
+  border-radius: 0.5rem;
+  margin-bottom: 4em;
+}
+
+.searches {
+  /* outline: 2px solid green; */
+  display: flex;
+  column-gap: 4rem;
+  row-gap: 1rem;
+  flex-wrap: wrap;
+  flex-basis: 65%;
+}
+
+.tag {
+  color: hsl(var(--Primary-100));
+  background-color: hsl(var(--Neutral-100-BG));
+  padding: 0.2em 0.5em;
+  font-size: 1.2rem;
+  font-weight: 700;
+  position: relative;
+  border-radius: 0.3em;
+  /* width: 5rem; */
+  cursor: pointer;
+}
+
+.tag::after {
+  content: "";
+  background-image: url(./images/icon-remove.svg);
+  background-repeat: no-repeat;
+  background-size: 21px;
+  background-position: center;
+  width: 2.4rem;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: -2.3rem;
+  background-color: hsl(var(--Primary-100));
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+
+.tag:hover::after {
+  background-color: hsl(var(--Neutral-400));
+}
+
+.clear-filter-btn {
+  background-color: transparent;
+  border: none;
+  color: hsl(var(--Neutral-300));
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.clear-filter-btn:hover {
+  color: hsl(var(--Primary-100));
+  text-decoration: underline;
+}
+.grid > * + * {
+  margin-top: 2.8em;
+}
+
+.job__list-item {
+  /* outline: 1px solid red; */
+  background-color: white;
+
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1.3em;
+  padding-top: 2rem;
+  gap: 1em;
+  position: relative;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.6);
+  border-radius: 0.5rem;
+}
+
+.featured {
+  border-left: 0.4rem solid hsl(var(--Primary-100));
+}
+
+.company-logo {
+  aspect-ratio: 1 / 1;
+  width: 3.5rem;
+  position: absolute;
+  top: 0;
+  transform: translateY(-50%);
+}
+
+.company-name {
+  color: hsl(var(--Primary-100));
+  font-size: 1.1rem;
+
+  font-weight: 700;
+  margin-right: 0.7rem;
+}
+
+.featured-listing,
+.new-listing {
+  text-transform: uppercase;
+  color: hsl(var(--Neutral-100-BG));
+  font-size: 0.8rem;
+  padding: 0.4em 0.5em 0.2em 0.5em;
+  border-radius: 100px;
+}
+
+.featured-listing {
+  background-color: hsl(var(--Neutral-400));
+  display: none;
+}
+
+.new-listing {
+  background-color: hsl(var(--Primary-100));
+  display: none;
+}
+
+.featured-listing.active,
+.new-listing.active {
+  display: inline;
+}
+
+.looking-for {
+  color: hsl(var(--Neutral-400));
+  font-weight: 700;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.looking-for:hover {
+  color: hsl(var(--Primary-100));
+}
+
+.other__detail-item {
+  color: hsl(var(--Neutral-300));
+  --center-dot: 1em;
+}
+
+.other__details > * + * {
+  margin-left: var(--center-dot);
+}
+.other__details > * + *::before {
+  content: "•";
+  margin-right: var(--center-dot);
+}
+
+.filter__list {
+  border-top: 1px solid hsl(var(--Neutral-300) / 0.5);
+  padding-top: 1.5rem;
+  /* margin-left: auto; */
+  display: flex;
+  flex-wrap: wrap;
+  /* align-items: center; */
+  column-gap: 1rem;
+  row-gap: 0.5rem;
+}
+
+.filter-item {
+  color: hsl(var(--Primary-100));
+  background-color: hsl(var(--Neutral-100-BG));
+  padding: 0.3em 0.5em 0.2em 0.5em;
+  font-size: 1rem;
+  font-weight: 700;
+  position: relative;
+  border-radius: 0.3em;
+  cursor: pointer;
+}
+.filter-item:hover,
+.filter-item.active {
+  background-color: hsl(var(--Primary-100));
+  color: hsl(var(--Neutral-100-BG));
+}
+
+/* 500px */
+@media (min-width: 31.25em) {
+  .company-logo {
+    position: relative;
+    top: initial;
+    width: 4.5rem;
+    transform: translateY(0);
+  }
+}
+
+/* 846px */
+
+@media (min-width: 52.875em) {
+  .filter__list {
+    margin-left: auto;
+    border-top: none;
+    padding-top: 0;
+  }
+  .job__list-item {
+    flex-wrap: nowrap;
+  }
+  .grid > * + * {
+    margin-top: 1.4em;
+  }
+}

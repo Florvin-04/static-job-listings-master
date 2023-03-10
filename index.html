@@ -1,193 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Job Listings</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <title>Frontend Mentor | Job Listings</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
-  <!-- Item Start -->
-  Photosnap
-  New!
-  Featured
-  Senior Frontend Developer
-  1d ago
-  Full Time
-  USA only
-  <!-- Role -->
-  Frontend
-  <!-- Level -->
-  Senior
-  <!-- Languages -->
-  HTML
-  CSS
-  JavaScript
-  <!-- Item End -->
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header" for-background-color></header>
 
-  <!-- Item Start -->
-  Manage
-  New!
-  Featured
-  Fullstack Developer
-  1d ago
-  Part Time
-  Remote
-  <!-- Role -->
-  Fullstack
-  <!-- Level -->
-  Midweight
-  <!-- Languages -->
-  Python
-  <!-- Tools -->
-  React
-  <!-- Item End -->
+    <main class="job__lists">
+      <div class="filters">
+        <div class="searches" filter-search>
+          <!-- <p class="tag">Frontend</p>
+          <p class="tag">CSS</p>
+          <p class="tag">JavaScript</p> -->
+        </div>
+        <button class="clear-filter-btn">Clear</button>
+      </div>
 
-  <!-- Item Start -->
-  Account
-  New!
-  Junior Frontend Developer
-  2d ago
-  Part Time
-  USA only
-  <!-- Role -->
-  Frontend
-  <!-- Level -->
-  Junior
-  <!-- Languages -->
-  JavaScript
-  <!-- Tools -->
-  React
-  Sass
-  <!-- Item End -->
+      <div class="grid" job-listing-parent>
+        <!-- <div class="job__list-item featured">
+          <img class="company-logo" src="./images/photosnap.svg" alt="logo of the company" />
+          <div class="company__details">
+            <div class="company__name-container">
+              <span class="company-name">Photosnap</span>
+              <span class="new-listing">new!</span>
+              <span class="featured-listing">featured</span>
+            </div>
+            <p class="looking-for">Senior Frontend Developer</p>
+            <div class="other__details">
+              <span class="time-of-posting other__detail-item">1d ago</span>
+              <span class="status other__detail-item">Full Time</span>
+              <span class="work-place other__detail-item">USA only</span>
+            </div>
+          </div>
+          <div class="filter__list">
+            <p class="filter-item">Frontend</p>
+            <p class="filter-item">Senior</p>
+            <p class="filter-item">HTML</p>
+            <p class="filter-item">CSS</p>
+            <p class="filter-item">JavaScript</p>
+          </div>
+        </div>
 
-  <!-- Item Start -->
-  MyHome
-  Junior Frontend Developer
-  5d ago
-  Contract
-  USA only
-  <!-- Role -->
-  Frontend
-  <!-- Level -->
-  Junior
-  <!-- Languages -->
-  CSS
-  JavaScript
-  <!-- Item End -->
+        <div class="job__list-item">
+          <img class="company-logo" src="./images/photosnap.svg" alt="logo of the company" />
+          <div class="company__details">
+            <div class="company__name-container">
+              <span class="company-name">Photosnap</span>
+              <span class="new-listing">new!</span>
+              <span class="featured-listing">featured</span>
+            </div>
+            <p class="looking-for">Senior Frontend Developer</p>
+            <div class="other__details">
+              <span class="time-of-posting other__detail-item">1d ago</span>
+              <span class="status other__detail-item">Full Time</span>
+              <span class="work-place other__detail-item">USA only</span>
+            </div>
+          </div>
+          <div class="filter__list">
+            <p class="filter-item">Frontend</p>
+            <p class="filter-item">Senior</p>
+            <p class="filter-item">HTML</p>
+            <p class="filter-item">CSS</p>
+            <p class="filter-item">JavaScript</p>
+          </div>
+        </div>
 
-  <!-- Item Start -->
-  Loop Studios
-  Software Engineer
-  1w ago
-  Full Time
-  Worldwide
-  <!-- Role -->
-  Fullstack
-  <!-- Level -->
-  Midweight
-  <!-- Languages -->
-  JavaScript
-  Ruby
-  <!-- Tools -->
-  Sass
-  <!-- Item End -->
-
-  <!-- Item Start -->
-  FaceIt
-  Junior Backend Developer
-  2w ago
-  Full Time
-  UK only
-  <!-- Role -->
-  Backend
-  <!-- Level -->
-  Junior
-  <!-- Languages -->
-  Ruby
-  <!-- Tools -->
-  RoR
-  <!-- Item End -->
-
-  <!-- Item Start -->
-  Shortly
-  Junior Developer
-  2w ago
-  Full Time
-  Worldwide
-  <!-- Role -->
-  Frontend
-  <!-- Level -->
-  Junior
-  <!-- Languages -->
-  HTML
-  JavaScript
-  <!-- Tools -->
-  Sass
-  <!-- Item End -->
-
-  <!-- Item Start -->
-  Insure
-  Junior Frontend Developer
-  2w ago
-  Full Time
-  USA only
-  <!-- Role -->
-  Frontend
-  <!-- Level -->
-  Junior
-  <!-- Languages -->
-  JavaScript
-  <!-- Tools -->
-  Vue
-  Sass
-  <!-- Item End -->
-
-  <!-- Item Start -->
-  Eyecam Co.
-  Full Stack Engineer
-  3w ago
-  Full Time
-  Worldwide
-  <!-- Role -->
-  Fullstack
-  <!-- Level -->
-  Midweight
-  <!-- Languages -->
-  JavaScript
-  Python
-  <!-- Tools -->
-  Django
-  <!-- Item End -->
-
-  <!-- Item Start -->
-  The Air Filter Company
-  Front-end Dev
-  1mo ago
-  Part Time
-  Worldwide
-  <!-- Role -->
-  Frontend
-  <!-- Level -->
-  Junior
-  <!-- Languages -->
-  JavaScript
-  <!-- Tools -->
-  React
-  Sass
-  <!-- Item End -->
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+        <div class="job__list-item">
+          <img class="company-logo" src="./images/photosnap.svg" alt="logo of the company" />
+          <div class="company__details">
+            <div class="company__name-container">
+              <span class="company-name">Photosnap</span>
+              <span class="new-listing">new!</span>
+              <span class="featured-listing">featured</span>
+            </div>
+            <p class="looking-for">Senior Frontend Developer</p>
+            <div class="other__details">
+              <span class="time-of-posting other__detail-item">1d ago</span>
+              <span class="status other__detail-item">Full Time</span>
+              <span class="work-place other__detail-item">USA only</span>
+            </div>
+          </div>
+          <div class="filter__list">
+            <p class="filter-item">Frontend</p>
+            <p class="filter-item">Senior</p>
+            <p class="filter-item">HTML</p>
+            <p class="filter-item">CSS</p>
+            <p class="filter-item">JavaScript</p>
+          </div>
+        </div> -->
+      </div>
+    </main>
+    <div class="attribution">Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded by <a href="https://github.com/Florvin-04/static-job-listings-master.git" target="_blank">FLORVIN</a>.</div>
+  </body>
 </html>
