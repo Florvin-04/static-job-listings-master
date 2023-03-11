@@ -1,5 +1,4 @@
 const jobLists = document.querySelector("[job-listing-parent]");
-const search = document.querySelector("[filter-search]");
 
 function getTag(tag, classVal = "filter-item") {
   return `
@@ -46,35 +45,122 @@ async function fecthData() {
 
     jobLists.appendChild(div);
   });
-
-  //   const pTags = document.querySelectorAll("[data-filter]");
-  //   pTags.forEach((p) => p.addEventListener("click", () => tagHandler(p)));
 }
 fecthData();
 
-// function tagHandler(target) {
+let allRoles;
 
-// }
+let filterArray = [];
 
 window.addEventListener("click", (e) => {
   const target = e.target;
   const filterData = target.hasAttribute("data-filter");
-  //   console.log(filterData.dataset.filter);
+  const filterBar = document.querySelector("[filter-bar]");
+  const searchParent = document.querySelector("[filter-search]");
+  const clearSearchBtn = target.hasAttribute("clear-search");
+  const clearSearchBtns = document.querySelector("[clear-search]");
+  const allActiveTags = document.querySelectorAll(".filter-item.active");
 
-  //   if (!filterData) return;
-  let currentEl;
-  if (filterData && target.closest("[filter-list]")) {
-    currentEl = target.dataset.filter;
-    let searches = getTag(currentEl, "tag");
-    search.innerHTML += searches;
-    close();
-  }
-  if (filterData && target.closest("[filter-search]")) {
-    target.remove();
-  }
-  console.log(currentEl);
+  addingContentOnSearchBar(target, filterData, searchParent);
+
+  //make the search bar visible
+  visibleSearchBar(filterData, filterBar, clearSearchBtns);
+
+  //filter jobs
+  filteredData();
+
+  // clear search bar
+  clearSearchBar(clearSearchBtn, searchParent, allActiveTags);
+
+  //remove filter from filter search bar
+  removeFilterData(target, filterData);
+
+  //make the search bar disappear
+  close(filterBar, clearSearchBtns);
 });
 
-function close() {
-  console.log(search.children.length);
+function addingContentOnSearchBar(target, filterData, search) {
+  let currentEl = target.dataset.filter;
+  if (filterData && target.closest("[filter-list]") && !filterArray.includes(currentEl)) {
+    filterArray.push(currentEl);
+    let searches = getTag(currentEl, "tag");
+    search.innerHTML += searches;
+  }
+
+  allRoles = document.querySelectorAll(`[data-filter=${currentEl}]`);
+  allRoles.forEach((role) => role.classList.add("active"));
+}
+
+function clearSearchBar(clearSearchBtn, searchParent, allActiveTags) {
+  if (clearSearchBtn) {
+    filterArray = [];
+    filteredData();
+    searchParent.innerHTML = "";
+    allActiveTags.forEach((tags) => tags.classList.remove("active"));
+  }
+}
+
+function removeFilterData(target, filterData) {
+  const dataVal = target.dataset.filter;
+
+  if (filterData && target.closest("[filter-search]")) {
+    target.remove();
+    const element = filterArray.indexOf(dataVal);
+    filterArray.splice(element, 1);
+    filteredData();
+    allRoles.forEach((tag) => tag.classList.remove("active"));
+  }
+}
+
+function filteredData() {
+  const allJobList = document.querySelectorAll(".job__list-item");
+
+  allJobList.forEach((list) => {
+    list.classList.add("hide");
+
+    const allRoleList = list.querySelectorAll(".filter-item");
+    let role = arrayOfRoles([allRoleList]);
+
+    // console.log(role);
+
+    //activate only the combination filter
+    const bool = filterArray.every((item) => {
+      // console.log(role.includes(item));
+      return role.includes(item);
+    });
+
+    //include all filter job
+    // const bool2 = filterArray.some((item) => {
+    //   // console.log(role.includes(item));
+    //   return role.includes(item);
+    // });
+
+    if (bool) {
+      list.classList.remove("hide");
+    }
+  });
+}
+
+//helper function to get all roles
+function arrayOfRoles(array) {
+  const role = [];
+
+  for (let i = 0; i < array.length; i++) {
+    array[i].forEach((item) => role.push(item.dataset.filter));
+  }
+  return role;
+}
+
+function visibleSearchBar(filterData, filterBar, clearSearchBtns) {
+  if (filterData) {
+    filterBar.classList.add("active-filter");
+    clearSearchBtns.classList.add("active-btn");
+  }
+}
+
+function close(filterBar, clearSearchBtns) {
+  if (filterArray.length == 0) {
+    filterBar.classList.remove("active-filter");
+    clearSearchBtns.classList.remove("active-btn");
+  }
 }

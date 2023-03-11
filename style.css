@@ -118,12 +118,22 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1em 1em;
 
   background-color: white;
   box-shadow: 3px 6px 33px 0px rgba(0, 0, 0, 0.6);
   border-radius: 0.5rem;
   margin-bottom: 4em;
+
+  opacity: 0;
+  padding: 0 0;
+  height: 0;
+
+  transition: all 0.25s ease-in-out;
+}
+.filters.active-filter {
+  opacity: 1;
+  height: max-content;
+  padding: 1em 1em;
 }
 
 .searches {
@@ -174,7 +184,13 @@ body {
   font-weight: 700;
   font-size: 1rem;
   cursor: pointer;
+  display: none;
 }
+
+.clear-filter-btn.active-btn {
+  display: block;
+}
+
 .clear-filter-btn:hover {
   color: hsl(var(--Primary-100));
   text-decoration: underline;
@@ -196,6 +212,10 @@ body {
   position: relative;
   box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.6);
   border-radius: 0.5rem;
+}
+
+.job__list-item.hide {
+  display: none;
 }
 
 .featured {
@@ -305,6 +325,9 @@ body {
 /* 846px */
 
 @media (min-width: 52.875em) {
+  .header {
+    background-image: url(./images/bg-header-desktop.svg);
+  }
   .filter__list {
     margin-left: auto;
     border-top: none;
